@@ -11,9 +11,8 @@ if ( location.href.match(/showthread/g) ) {
 		console.log("vBulletin found, stripping ignored user posts.");
 
 	//strip "Sent from my $foo using Tapatalk" spam
-	document.body.innerHTML = x.replace(/Sent from my .* using Tapatalk/i,"");
-
-
+	if ( x.match(/Tapatalk/g) ) { console.log("Tapatalk detected.  Removing."); }
+	document.body.innerHTML = x.replace(/Sent from my .* using .*Tapatalk.*/ig,'');
 
 
 	//strip ignored users' posts
