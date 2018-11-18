@@ -1,11 +1,13 @@
+var x = document.body.innerHTML;
+if ( x.match(/Tapatalk/g) ) { console.log("Forum Fixer: Tapatalk detected.  Removing."); 
+	document.body.innerHTML = x.replace(/Sent from my .* using .*Tapatalk/ig,''); }
+
 if ( location.href.match(/showthread/g) ) {
 	// because the extension applies to all URLs, we have to filter
 	// showthread.php is a vBulletin thing, so we're almost there
 
 	console.log("Forum Fixer: showthread URL match, checking for vBulletin.");
 
-	var x = document.body.innerHTML;
-	
 	//simple test for vBulletin anywhere in the page, then strip sections
 	if ( x.match(/vBulletin/g) ) {
 		console.log("vBulletin found, stripping ignored user posts.");
